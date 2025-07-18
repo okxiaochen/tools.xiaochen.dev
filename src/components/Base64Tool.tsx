@@ -42,7 +42,7 @@ export default function Base64Tool() {
   };
 
   return (
-    <div className="p-6">
+    <div id="base64" className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">Base64 Encode/Decode</h2>
         <button 
