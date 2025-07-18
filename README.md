@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Tools
 
-## Getting Started
+A collection of essential developer utilities built with Next.js and TypeScript. This web application provides commonly used tools for developers in a clean, modern interface.
 
-First, run the development server:
+## 🔗 Live Website
+
+**[https://tools.xiaochen.dev](https://tools.xiaochen.dev)**
+
+## 🛠️ Available Tools
+
+### Base64 Encoder/Decoder
+- Encode text to Base64 format
+- Decode Base64 strings back to readable text
+- Real-time conversion as you type
+- Copy results with one click
+
+### URL Encoder/Decoder
+- URL encode text for safe transmission in URLs
+- Decode URL-encoded strings
+- Handles special characters and spaces
+- Instant conversion
+
+### JSON Query Tool
+- Parse and format JSON data
+- Query JSON using JSONPath expressions
+- Validate JSON syntax
+- Pretty-print JSON with proper indentation
+- Extract specific values from complex JSON structures
+
+## ✨ Features
+
+- **Dark/Light Mode**: Toggle between themes or use system preference
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Real-time Processing**: See results instantly as you type
+- **Copy to Clipboard**: One-click copying of results
+- **Clean Interface**: Minimalist design focused on usability
+- **No Data Storage**: All processing happens locally in your browser
+
+## 🚀 Technology Stack
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **next-themes** - Theme management
+- **JSONPath** - JSON querying capabilities
+
+## 🏃‍♂️ Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 License
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the MIT License.
