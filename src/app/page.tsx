@@ -6,7 +6,7 @@ import FloatingMenu from '@/components/FloatingMenu';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-slate-200 to-gray-150 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/60 dark:bg-slate-900/70 backdrop-blur-lg border-b border-slate-200/60 dark:border-slate-700/50">
         <div className="container mx-auto px-6 py-4">
@@ -34,15 +34,15 @@ export default function Home() {
 
           {/* Tools Grid */}
           <div className="max-w-5xl mx-auto space-y-6">
-            <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
               <Base64Tool />
             </div>
             
-            <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
               <QueryJsonTool />
             </div>
             
-            <div className="bg-white/50 dark:bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
               <UrlEncodeTool />
             </div>
           </div>
