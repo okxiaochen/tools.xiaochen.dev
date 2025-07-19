@@ -44,7 +44,15 @@ export default function Base64Tool() {
   return (
     <div id="base64" className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">Base64 Encode/Decode</h2>
+        <div className="flex items-center gap-3">
+          <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">Base64 Encode/Decode</h2>
+          <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Client-side</span>
+          </div>
+        </div>
         <button 
           onClick={clearAll}
           className="px-4 py-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors text-sm font-medium"
