@@ -44,16 +44,27 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Markdown to PDF global print rules */
+/* Markdown to PDF global rules */
 .markdown-body pre {
   white-space: pre-wrap !important;
   word-break: break-all !important;
   overflow-wrap: break-word !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
 }
 .markdown-body code {
   white-space: pre-wrap !important;
   word-break: break-all !important;
   overflow-wrap: break-word !important;
+}
+.markdown-body pre code.hljs {
+  padding: 1.25em !important;
+  border-radius: 0.5rem !important;
+  display: block;
+}
+.markdown-body li::marker {
+  color: inherit !important;
 }
 
 @media print {
@@ -69,15 +80,6 @@
   }
   .markdown-body {
     color: black !important;
-  }
-  .markdown-body pre {
-    background-color: #f8f9fa !important;
-    border: 1px solid #dee2e6 !important;
-    color: #212529 !important;
-    page-break-inside: avoid;
-  }
-  .markdown-body code {
-    color: #212529 !important;
   }
   .prose :where(h1, h2, h3, h4, h5, h6) {
     page-break-after: avoid;
