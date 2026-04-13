@@ -3,7 +3,7 @@ import QueryJsonTool from '@/components/QueryJsonTool';
 import UrlEncodeTool from '@/components/UrlEncodeTool';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import FloatingMenu from '@/components/FloatingMenu';
-import MarkdownToPdfTool from '@/components/MarkdownToPdfTool';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -69,8 +69,24 @@ export default function Home() {
             </div>
 
             <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <MarkdownToPdfTool />
+              <UrlEncodeTool />
             </div>
+            
+            <Link href="/markdown-to-pdf" className="block bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 backdrop-blur-sm rounded-xl border border-indigo-200/60 dark:border-indigo-700/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 p-8 group">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h2 className="text-2xl font-semibold text-indigo-900 dark:text-indigo-100 flex items-center gap-3">
+                    <svg className="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    Markdown to PDF
+                  </h2>
+                  <p className="text-indigo-700/70 dark:text-indigo-300/70 mt-2 font-medium">Open the dedicated full-screen editor with live preview to instantly convert markdown documents into formatted PDFs.</p>
+                </div>
+                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">
+                  Try it out
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </main>
