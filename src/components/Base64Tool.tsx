@@ -74,7 +74,7 @@ export default function Base64Tool() {
               encodeText(e.target.value);
             }}
             placeholder="Enter plain text here"
-            className="w-full h-48 p-4 border border-slate-200 dark:border-slate-600 rounded-lg bg-white/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 font-mono text-sm resize-vertical focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-colors backdrop-blur-sm"
+            className="w-full h-72 p-5 border border-slate-200 dark:border-slate-700/80 rounded-xl bg-white/80 dark:bg-slate-900/60 text-slate-900 dark:text-slate-100 font-mono text-sm resize-y focus:outline-none focus:border-blue-500 transition-colors"
           />
           <button
             onClick={() => copyToClipboard(plainText)}
@@ -96,7 +96,7 @@ export default function Base64Tool() {
               decodeText(e.target.value);
             }}
             placeholder="Enter Base64 encoded text here"
-            className="w-full h-48 p-4 border border-slate-200 dark:border-slate-600 rounded-lg bg-white/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 font-mono text-sm resize-vertical focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-colors backdrop-blur-sm"
+            className="w-full h-72 p-5 border border-slate-200 dark:border-slate-700/80 rounded-xl bg-white/80 dark:bg-slate-900/60 text-slate-900 dark:text-slate-100 font-mono text-sm resize-y focus:outline-none focus:border-blue-500 transition-colors"
           />
           <button
             onClick={() => copyToClipboard(encodedText)}

@@ -2,14 +2,14 @@ import Base64Tool from '@/components/Base64Tool';
 import QueryJsonTool from '@/components/QueryJsonTool';
 import UrlEncodeTool from '@/components/UrlEncodeTool';
 import DarkModeToggle from '@/components/DarkModeToggle';
-import FloatingMenu from '@/components/FloatingMenu';
+
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-slate-200 to-gray-150 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 dark:from-slate-950 dark:via-[#0b1120] dark:to-slate-950">
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-white/60 dark:bg-slate-900/70 backdrop-blur-lg border-b border-slate-200/60 dark:border-slate-700/50">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/80">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
@@ -55,25 +55,21 @@ export default function Home() {
           </div>
 
           {/* Tools Grid */}
-          <div className="max-w-5xl mx-auto space-y-6">
-            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div className="max-w-[1600px] mx-auto w-full grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div className="bg-white/60 dark:bg-slate-900/30 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-800/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 h-full flex flex-col overflow-hidden">
               <Base64Tool />
             </div>
             
-            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white/60 dark:bg-slate-900/30 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-800/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 h-full flex flex-col overflow-hidden">
               <QueryJsonTool />
             </div>
             
-            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <UrlEncodeTool />
-            </div>
-
-            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-white/60 dark:bg-slate-900/30 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-800/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 h-full flex flex-col overflow-hidden">
               <UrlEncodeTool />
             </div>
             
-            <Link href="/markdown-to-pdf" className="block bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 backdrop-blur-sm rounded-xl border border-indigo-200/60 dark:border-indigo-700/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 p-8 group">
-              <div className="flex justify-between items-center">
+            <Link href="/markdown-to-pdf" className="h-full flex flex-col bg-gradient-to-br from-indigo-50 to-blue-50/50 dark:from-indigo-950/40 dark:to-blue-900/20 backdrop-blur-xl rounded-2xl border border-indigo-200/50 dark:border-indigo-800/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-0.5 transition-all duration-300 p-8 group">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center h-full gap-4">
                 <div>
                   <h2 className="text-2xl font-semibold text-indigo-900 dark:text-indigo-100 flex items-center gap-3">
                     <svg className="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
@@ -81,7 +77,7 @@ export default function Home() {
                   </h2>
                   <p className="text-indigo-700/70 dark:text-indigo-300/70 mt-2 font-medium">Open the dedicated full-screen editor with live preview to instantly convert markdown documents into formatted PDFs.</p>
                 </div>
-                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300">
+                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium group-hover:text-indigo-700 dark:group-hover:text-indigo-300 shrink-0">
                   Try it out
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
@@ -91,8 +87,7 @@ export default function Home() {
         </div>
       </main>
       
-      {/* Floating Navigation Menu */}
-      <FloatingMenu position="right" />
+
 
               {/* Contact info at bottom */}
         <div className="text-center pb-1">

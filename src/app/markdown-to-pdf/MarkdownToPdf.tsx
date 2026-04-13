@@ -113,6 +113,13 @@ export default function MarkdownToPdf() {
           header, nav, footer, .floating-menu, #markdown-editor-pane {
             display: none !important;
           }
+          /* Force block pagination to prevent height truncation on print */
+          #markdown-to-pdf-root, main, #markdown-preview-pane, #markdown-preview-pane > div {
+            height: auto !important;
+            overflow: visible !important;
+            display: block !important;
+            position: static !important;
+          }
           /* Ensure preview takes full space and removes app scroll constraints */
           #markdown-preview-pane {
             width: 100% !important;
@@ -131,6 +138,35 @@ export default function MarkdownToPdf() {
             color: black !important;
           }
           /* Ensure code blocks wrap properly, and preserve syntax colors */
+          /* Force basic typography back to standard print colors regardless of dark mode */
+          #markdown-preview h1,
+          #markdown-preview h2,
+          #markdown-preview h3,
+          #markdown-preview h4,
+          #markdown-preview p,
+          #markdown-preview li,
+          #markdown-preview blockquote,
+          #markdown-preview strong,
+          #markdown-preview b,
+          #markdown-preview em,
+          #markdown-preview a,
+          #markdown-preview code:not(pre code) {
+            color: #0f172a !important;
+          }
+
+          #markdown-preview blockquote {
+            border-left-color: #cbd5e1 !important;
+            color: #334155 !important;
+          }
+          
+          #markdown-preview code:not(pre code) {
+            background-color: #f1f5f9 !important;
+          }
+
+          #markdown-preview hr {
+            border-color: #e2e8f0 !important;
+          }
+
           .markdown-body * {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
