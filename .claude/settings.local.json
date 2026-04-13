@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(node -e \"console.log\\(require\\('/Users/xiao/Code/xiaochen.dev/tools/node_modules/tailwindcss/package.json'\\).version\\)\")"
+    ]
+  }
+}
