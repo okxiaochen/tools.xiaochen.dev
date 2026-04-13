@@ -3,6 +3,7 @@ import QueryJsonTool from '@/components/QueryJsonTool';
 import UrlEncodeTool from '@/components/UrlEncodeTool';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import FloatingMenu from '@/components/FloatingMenu';
+import MarkdownToPdfTool from '@/components/MarkdownToPdfTool';
 
 export default function Home() {
   return (
@@ -65,6 +66,10 @@ export default function Home() {
             
             <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
               <UrlEncodeTool />
+            </div>
+
+            <div className="bg-gradient-to-br from-white/80 via-white/70 to-slate-50/80 dark:from-slate-800/40 dark:via-slate-800/40 dark:to-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-200/80 dark:border-slate-700/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <MarkdownToPdfTool />
             </div>
           </div>
         </div>

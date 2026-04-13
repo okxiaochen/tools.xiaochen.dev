@@ -5,3 +5,57 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Markdown to PDF global print rules */
+.markdown-body pre {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+}
+.markdown-body code {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+}
+
+@media print {
+  @page {
+    margin: 20mm;
+  }
+  body, html {
+    background-color: white !important;
+    height: auto !important;
+  }
+  /* Hide the menu, headers, etc when printing */
+  header, button, nav, .floating-menu {
+    display: none !important;
+  }
+  .markdown-body {
+    color: black !important;
+  }
+  /* Override prose invert for printing */
+  .dark \.markdown-body {
+    --tw-prose-body: var(--tw-prose-slate-body) !important;
+    --tw-prose-headings: var(--tw-prose-slate-headings) !important;
+    --tw-prose-code: var(--tw-prose-slate-code) !important;
+    --tw-prose-quotes: var(--tw-prose-slate-quotes) !important;
+    --tw-prose-links: var(--tw-prose-slate-links) !important;
+  }
+  /* Print code blocks styling */
+  .markdown-body pre {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    color: #212529 !important;
+    page-break-inside: avoid;
+  }
+  .markdown-body code {
+    color: #212529 !important;
+  }
+  /* Page break avoidance for some elements */
+  .prose :where(h1, h2, h3, h4, h5, h6) {
+    page-break-after: avoid;
+  }
+  .prose :where(blockquote, img, table) {
+    page-break-inside: avoid;
+  }
+}

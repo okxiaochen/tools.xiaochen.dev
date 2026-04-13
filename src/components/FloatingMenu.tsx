@@ -16,6 +16,7 @@ export default function FloatingMenu({ position = 'right' }: FloatingMenuProps) 
     { id: 'base64', name: 'Base64', href: '#base64' },
     { id: 'query', name: 'Query JSON', href: '#query' },
     { id: 'url', name: 'URL Encode', href: '#url' },
+    { id: 'markdown', name: 'Markdown to PDF', href: '#markdown-to-pdf' },
   ];
 
   // Track current section based on scroll position
