@@ -55,7 +55,7 @@ export default function Home() {
               <UrlEncodeTool />
             </div>
 
-            <Link href="/markdown-to-pdf" className="h-full flex flex-col bg-gradient-to-br from-indigo-50/80 to-blue-50/50 dark:from-indigo-950/40 dark:to-blue-900/20 backdrop-blur-xl rounded-2xl border border-indigo-200/50 dark:border-indigo-800/40 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-8 group overflow-hidden mix-blend-normal">
+            <Link href="/markdown-to-pdf" className="h-full flex flex-col bg-linear-to-br from-indigo-50/80 to-blue-50/50 dark:from-indigo-950/40 dark:to-blue-900/20 backdrop-blur-xl rounded-2xl border border-indigo-200/50 dark:border-indigo-800/40 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-8 group overflow-hidden mix-blend-normal">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center h-full gap-4">
                 <div>
                   <h2 className="text-2xl font-bold text-indigo-900 dark:text-indigo-100 flex items-center gap-3 tracking-tight">

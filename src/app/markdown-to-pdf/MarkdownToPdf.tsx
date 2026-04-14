@@ -266,7 +266,7 @@ export default function MarkdownToPdf() {
             <div className="flex-1 min-w-0 overflow-auto p-6 md:p-10 print:overflow-visible print:p-0">
               <div
                 id="markdown-preview"
-                className="markdown-body prose prose-slate dark:prose-invert max-w-3xl mx-auto break-words print:max-w-none print:prose-slate"
+                className="markdown-body prose prose-slate dark:prose-invert max-w-3xl mx-auto wrap-break-word print:max-w-none print:prose-slate"
                 dangerouslySetInnerHTML={{ __html: htmlPreview }}
               />
             </div>

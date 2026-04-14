@@ -27,6 +27,12 @@ A collection of essential developer utilities built with Next.js and TypeScript.
 - Pretty-print JSON with proper indentation
 - Extract specific values from complex JSON structures
 
+### Markdown to PDF
+- Instantly parse and render Markdown documents with live preview
+- Syntax highlighting for code blocks
+- Dedicated print optimization to export pixel-perfect PDFs
+- Full-screen distraction-free editor with light/dark mode support
+
 ## ✨ Features
 
 - **Dark/Light Mode**: Toggle between themes or use system preference
