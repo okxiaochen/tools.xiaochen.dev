@@ -103,7 +103,8 @@ export default function MarkdownToPdf() {
   return (
     <>
       {/* Scope print styles so that it formats nicely and hides UI elements during native print */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media print {
           body, html {
             background-color: white !important;
