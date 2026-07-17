@@ -70,6 +70,22 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+
+            <Link href="/text-diff" className="h-full flex flex-col bg-linear-to-br from-emerald-50/80 to-teal-50/50 dark:from-emerald-950/40 dark:to-teal-900/20 backdrop-blur-xl rounded-2xl border border-emerald-200/50 dark:border-emerald-800/40 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-8 group overflow-hidden mix-blend-normal">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center h-full gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100 flex items-center gap-3 tracking-tight">
+                    <svg className="w-6 h-6 text-emerald-500 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                    Text Diff
+                  </h2>
+                  <p className="text-emerald-700/80 dark:text-emerald-300/80 mt-2 font-medium max-w-xl leading-relaxed">Compare two blocks of text side by side, name each source, and highlight exactly what changed — line by line and word by word.</p>
+                </div>
+                <div className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-medium shadow-[0_4px_14px_0_rgb(16,185,129,0.39)] transition-all duration-300 group-hover:shadow-[0_6px_20px_rgba(16,185,129,0.23)] group-hover:scale-105 shrink-0">
+                  Try it out
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </main>
