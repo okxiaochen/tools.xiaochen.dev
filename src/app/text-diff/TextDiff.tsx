@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, GitCompare, ArrowLeftRight, Trash2, Columns2, AlignJustify } from 'lucide-react';
 import DarkModeToggle from '@/components/DarkModeToggle';
-import { computeDiff, type DiffRow, type WordToken } from '@/lib/diff';
+import { computeDiff, type DiffRow, type DiffStats, type WordToken } from '@/lib/diff';
 import { detectClipboardSource } from '@/lib/clipboardSource';
 
 type ViewMode = 'split' | 'unified';
@@ -80,6 +80,16 @@ function Cell({
           content
         )}
       </div>
+    </div>
+  );
+}
+
+function StatsBadges({ stats }: { stats: DiffStats }) {
+  return (
+    <div className="flex items-center gap-3 text-xs font-medium tabular-nums shrink-0">
+      <span className="text-emerald-600 dark:text-emerald-400">+{stats.added}</span>
+      <span className="text-rose-600 dark:text-rose-400">−{stats.removed}</span>
+      <span className="text-amber-600 dark:text-amber-400">~{stats.changed}</span>
     </div>
   );
 }
@@ -311,30 +321,27 @@ export default function TextDiff() {
 
         {/* Diff output */}
         <div className="rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm overflow-hidden">
-          {/* Header row with names + stats */}
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-slate-200/60 dark:border-slate-800/60 bg-slate-50/60 dark:bg-slate-900/40">
-            {viewMode === 'split' ? (
-              <div className="grid grid-cols-2 flex-1 min-w-0 gap-4 text-sm font-semibold">
-                <span className="truncate text-rose-600 dark:text-rose-400">
-                  {leftName.trim() || DEFAULT_LEFT_NAME}
-                </span>
-                <span className="truncate text-emerald-600 dark:text-emerald-400">
-                  {rightName.trim() || DEFAULT_RIGHT_NAME}
-                </span>
+          {/* Header row — column widths mirror the diff body so names sit above their columns */}
+          {viewMode === 'split' ? (
+            <div className="grid grid-cols-2 border-b border-slate-200/60 dark:border-slate-800/60 bg-slate-50/60 dark:bg-slate-900/40 text-sm font-semibold">
+              <div className="min-w-0 pl-16 pr-3 py-2.5">
+                <span className="block truncate text-rose-600 dark:text-rose-400">{leftName.trim() || DEFAULT_LEFT_NAME}</span>
               </div>
-            ) : (
+              <div className="min-w-0 pl-16 pr-3 py-2.5 flex items-center justify-between gap-3">
+                <span className="truncate text-emerald-600 dark:text-emerald-400">{rightName.trim() || DEFAULT_RIGHT_NAME}</span>
+                <StatsBadges stats={stats} />
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-slate-200/60 dark:border-slate-800/60 bg-slate-50/60 dark:bg-slate-900/40">
               <div className="flex-1 min-w-0 text-sm font-semibold text-slate-600 dark:text-slate-300">
                 <span className="text-rose-600 dark:text-rose-400">{leftName.trim() || DEFAULT_LEFT_NAME}</span>
                 <span className="mx-2 text-slate-400">→</span>
                 <span className="text-emerald-600 dark:text-emerald-400">{rightName.trim() || DEFAULT_RIGHT_NAME}</span>
               </div>
-            )}
-            <div className="flex items-center gap-3 text-xs font-medium tabular-nums shrink-0">
-              <span className="text-emerald-600 dark:text-emerald-400">+{stats.added}</span>
-              <span className="text-rose-600 dark:text-rose-400">−{stats.removed}</span>
-              <span className="text-amber-600 dark:text-amber-400">~{stats.changed}</span>
+              <StatsBadges stats={stats} />
             </div>
-          </div>
+          )}
 
           <div className="overflow-x-auto font-mono text-sm">
             {!hasInput ? (
