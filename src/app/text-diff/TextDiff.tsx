@@ -2,10 +2,11 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, GitCompare, ArrowLeftRight, Trash2, Columns2, AlignJustify } from 'lucide-react';
+import { ArrowLeft, GitCompare, ArrowLeftRight, Trash2, Columns2, AlignJustify, Braces } from 'lucide-react';
 import DarkModeToggle from '@/components/DarkModeToggle';
 import { computeDiff, type DiffRow, type DiffStats, type WordToken } from '@/lib/diff';
 import { detectClipboardSource } from '@/lib/clipboardSource';
+import { looksLikeJson, normalizeJson } from '@/lib/jsonNormalize';
 
 type ViewMode = 'split' | 'unified';
 
@@ -164,10 +165,29 @@ export default function TextDiff() {
   const [ignoreWhitespace, setIgnoreWhitespace] = useState(false);
   const [ignoreCase, setIgnoreCase] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('split');
+  const [formatJson, setFormatJson] = useState(false);
+  const [sortKeys, setSortKeys] = useState(true);
+
+  // In JSON mode both sides are re-serialized before diffing. If either side
+  // fails to parse, fall back to the raw text for both so the diff stays meaningful.
+  const json = useMemo(() => {
+    if (!formatJson) return null;
+    const left = normalizeJson(leftText, { sortKeys });
+    const right = normalizeJson(rightText, { sortKeys });
+    return { left, right, ok: left.ok && right.ok };
+  }, [formatJson, sortKeys, leftText, rightText]);
+
+  const showJsonHint = useMemo(
+    () => !formatJson && looksLikeJson(leftText) && looksLikeJson(rightText),
+    [formatJson, leftText, rightText]
+  );
+
+  const diffLeft = json?.ok && json.left.ok ? json.left.text : leftText;
+  const diffRight = json?.ok && json.right.ok ? json.right.text : rightText;
 
   const { rows, stats } = useMemo(
-    () => computeDiff(leftText, rightText, { ignoreWhitespace, ignoreCase }),
-    [leftText, rightText, ignoreWhitespace, ignoreCase]
+    () => computeDiff(diffLeft, diffRight, { ignoreWhitespace, ignoreCase }),
+    [diffLeft, diffRight, ignoreWhitespace, ignoreCase]
   );
 
   const hasInput = leftText !== '' || rightText !== '';
@@ -303,6 +323,32 @@ export default function TextDiff() {
             Ignore case
           </label>
 
+          <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={formatJson}
+              onChange={(e) => setFormatJson(e.target.checked)}
+              className="rounded border-slate-300 dark:border-slate-600 text-blue-600 focus:ring-blue-500"
+            />
+            Format JSON
+          </label>
+          <label
+            className={`flex items-center gap-2 text-sm select-none ${
+              formatJson
+                ? 'text-slate-600 dark:text-slate-300 cursor-pointer'
+                : 'text-slate-400 dark:text-slate-600 cursor-not-allowed'
+            }`}
+          >
+            <input
+              type="checkbox"
+              checked={sortKeys}
+              disabled={!formatJson}
+              onChange={(e) => setSortKeys(e.target.checked)}
+              className="rounded border-slate-300 dark:border-slate-600 text-blue-600 focus:ring-blue-500 disabled:opacity-50"
+            />
+            Sort keys
+          </label>
+
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={swap}
@@ -318,6 +364,38 @@ export default function TextDiff() {
             </button>
           </div>
         </div>
+
+        {showJsonHint && (
+          <div className="flex flex-wrap items-center gap-3 -mt-2 px-4 py-2.5 rounded-lg border border-blue-200/70 dark:border-blue-900/60 bg-blue-50/70 dark:bg-blue-950/30 text-sm text-blue-700 dark:text-blue-300">
+            <Braces className="w-4 h-4 shrink-0" />
+            <span className="flex-1 min-w-0">Both sides look like JSON. Format them and sort keys to ignore layout and key-order differences?</span>
+            <button
+              onClick={() => {
+                setFormatJson(true);
+                setSortKeys(true);
+              }}
+              className="px-3 py-1 rounded-md text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+            >
+              Compare as JSON
+            </button>
+          </div>
+        )}
+
+        {json && !json.ok && (
+          <div className="-mt-2 px-4 py-2.5 rounded-lg border border-amber-200/70 dark:border-amber-900/60 bg-amber-50/70 dark:bg-amber-950/30 text-sm text-amber-800 dark:text-amber-300">
+            <div className="font-medium">Couldn&apos;t parse JSON — showing a plain text diff instead.</div>
+            {!json.left.ok && (
+              <div className="mt-1 font-mono text-xs break-words">
+                {leftName.trim() || DEFAULT_LEFT_NAME}: {json.left.error}
+              </div>
+            )}
+            {!json.right.ok && (
+              <div className="mt-1 font-mono text-xs break-words">
+                {rightName.trim() || DEFAULT_RIGHT_NAME}: {json.right.error}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Diff output */}
         <div className="rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm overflow-hidden">
